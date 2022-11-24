@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Note>
+
+@{
+    ViewData["Title"] = "Notes";
+}
+
+
+<partial name="_Notification" />
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2>Note List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Note" asp-action="Create" class="btn btn-primary">
+                Create New Note
+            </a>
+        </div>
+    </div>
+    <br />
+    <div class="container d-flex flex-wrap mx-5">
+        @foreach(var obj in Model)
+        {
+        <div class="card w-25 mx-3 my-3 border-5">
+            <div class="d-flex justify-content-end bg-secondary btn-group-lg">
+                <form method="post" asp-action="Delete" asp-route-id="@obj.Id">
+                    <input type="hidden" asp-for="@obj.Id">
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-info" asp-controller="Note" asp-action="Edit" asp-route-id="@obj.Id"><i class="fas fa-edit"></i></a>
+                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                    </div>
+                </form>
+            </div>
+            <div style="height:300px; font-size:20px; color:azure;" class="p-2"> &nbsp; @obj.Text</div>
+        </div>
+        }
+    </div>
+</div>

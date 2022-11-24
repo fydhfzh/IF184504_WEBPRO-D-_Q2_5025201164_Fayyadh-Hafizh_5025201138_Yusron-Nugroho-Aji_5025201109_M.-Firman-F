@@ -1,0 +1,42 @@
+﻿@model User
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<partial name="_Notification" />
+
+<section class="vh-100" style="color:azure;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-80">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card  shadow-2-strong" style="border-radius: 1rem;">
+                    <div class="card-body p-5 text-center">
+
+                        <h3 class="mb-5">Login</h3>
+
+                        <form method="post" asp-action="Authenticate">
+                            <input type="hidden" asp-for="Name" value="Temp"/>
+                            <div class="form-outline mb-4">
+                                <label class="form-label" asp-for="Email">Email</label>
+                                <input type="email" asp-for="Email" class="form-control form-control-lg" />
+                                <span asp-validation-for="Email"></span>
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <label class="form-label" asp-for="Password">Password</label>
+                                <input type="password" asp-for="Password" class="form-control form-control-lg" />
+                                <span asp-validation-for="Password"></span>
+                            </div>
+
+                            <button class="btn btn-primary btn-lg btn-block" type="submit" style="width:200px">Login</button>
+
+                            <hr class="my-4">
+                            <div class="text-decoration-none text-lg-center" style="color:cadetblue">Not yet registered ? <strong><a asp-controller="Register" asp-action="Index">Register Here</a></strong></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
